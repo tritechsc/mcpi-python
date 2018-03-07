@@ -183,4 +183,4 @@ FENCE_GATE          107
 GLOWING_OBSIDIAN    246
 NETHER_REACTOR_CORE 247
 """
-//Made in conjunction with Craig Coleman, and Kevin Forrister
+*Made in conjunction with Craig Coleman, and Kevin Forrister
