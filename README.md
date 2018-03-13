@@ -1,16 +1,6 @@
 # mcpi-python
 
-Minecraft on the Raspberry Pi
-Python Scripts Created by:
-Julian
-Nathan
-Evan
-Grant
-
-Kevin Forester
-
-Brenden
-
+Minecraft Python on the Raspberry Pi
 <hr />
 This repository is for using Minecraft to teach and experiment with coding in Python and Networking.
 
@@ -30,6 +20,16 @@ Partlist:
 - Minitor or TV with hdmi 
 - Keyboard
 - Mouse
+<hr />
+Python Scripts Created by:
+Julian
+Nathan
+Evan
+Grant
+Kevin
+Brenden
+
+Craig Coleman
 <pre>
 
 API Blocks
