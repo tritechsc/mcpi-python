@@ -1,6 +1,10 @@
 
 from mcpi.minecraft import Minecraft
-from math import ceil
+import math
+
+XY=0
+XZ=1
+YZ=2
 
 def sphere(mc,px,py,pz,X,Y,Z,block,*extradata):
  edata=list(extradata)
@@ -43,8 +47,8 @@ def main(place):
  x,y,z=mc.player.getPos()
  mc.setBlocks(x-5,y,z-20,x+5,y+5,z-8,0)
  sphere(mc,x,y,z-15,5,5,5,80,0,4,4,4,0.5,1)
- cylinder(mc,x,y,z-10,3,3,1,shapes.XY,80)
- cylinder(mc,x,y,z-10,2,2,1,shapes.XY,0)
+ cylinder(mc,x,y,z-10,3,3,1,XY,80)
+ cylinder(mc,x,y,z-10,2,2,1,XY,0)
  height=0
  nx,ny,nz=x,y-1,z-15
  clear=True
@@ -57,7 +61,7 @@ def main(place):
     clearpos+=1
   if clearpos==0:
    clear=False
- shapes.cylinder(mc,x,y-1-ceil(height/2),z-15,5,ceil(height/2),5,shapes.XZ,80)
+ cylinder(mc,x,y-1-math.ceil(height/2),z-15,5,math.ceil(height/2),5,XZ,80)
  mc.setBlocks(x-2,y-1-height,z-11,x+2,y-1,z-9,80)
  #mc.setBlocks(x-5,y-1,z-20,x+5,y-1,z-8,80)
 
