@@ -1,6 +1,8 @@
 # mcpi-python
 
 Minecraft Python on the Raspberry Pi
+Your can clone this version of Minecraft Pi to un on your Desktop
+https://github.com/tritechsc/mcpi
 <hr />
 This repository is for using Minecraft to teach and experiment with coding in Python and Networking.
 
