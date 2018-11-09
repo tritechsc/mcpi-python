@@ -50,8 +50,6 @@ def main():
 	x, y, z = mc.player.getPos()
 	print("position ",x,y,z)
 	#clear_with_air(mc,x,y,s,e,k,l)
-	# s start, e end , w width
-	s,e,w = 0,11,5
 	body(mc, x,y,z)
 	#posta(mc, x,y-5,z+4,42)
 	#core(mc,x,y-7,z,42)
