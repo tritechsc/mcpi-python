@@ -3,19 +3,22 @@ from mcpi import block
 from time import sleep
 
 def init(): 
-	# change 192.168.1.13 to 127.0.0.1 or your ip
-	mc = Minecraft.create("127.0.0.1", 4711)
-	x, y, z = mc.player.getPos()  
-	return mc
+    # change 192.168.1.13 to 127.0.0.1 or your ip
+    mc = Minecraft.create("127.0.0.1", 4711)
+    x, y, z = mc.player.getPos()  
+    return mc
 
 #main  
 def main():
-	mc = init()
-	mc.player.setPos(0, 0, 0)
-	x, y, z = mc.player.getPos()  
-	mc.setBlocks(x-2, y, z+2, x+2, y+5, z+7, 1)
-	mc.setBlock(x, y+6, z+5, 8)
-	mc.postToChat("HELLO WORLD")
+    mc = init()
+    # change mc.player.setPos(x, y, z)
+    mc.player.setPos(0, 30, 0)
+    x, y, z = mc.player.getPos()  
+    mc.setBlocks(x-2, y, z+2, x+2, y+5, z+7, 1)
+    mc.setBlock(x, y+6, z+5, 8)
+    # change mc.player.setPos(x, y, z)
+    mc.player.setPos(0, 30, -5)
+    mc.postToChat("HELLO WORLD")
 main()
   
 # multiple line comment

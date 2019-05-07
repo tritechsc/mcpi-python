@@ -1,3 +1,4 @@
+#cwc
 from mcpi.minecraft import Minecraft
 from mcpi import block
 from time import sleep
@@ -8,85 +9,85 @@ def init():
     return mc
 
 def clear_with_air(mc, x, y, z,h,k,l):
-	air = 0
-	mc.setBlocks(x-h, y-k, z-l, x+h, y+k, z+l, air) 
+    air = 0
+    mc.setBlocks(x-h, y-k, z-l, x+h, y+k, z+l, air) 
 
 def core(mc,x,y,z,m):  
-	mc.setBlocks(x-2, y-1, z, x+2, y+1, z+24, m)
-	mc.setBlocks(x-1, y-2, z, x+1, y+2, z+20, m)
-	mc.setBlocks(x-1, y-1, z-1, x+1, y+1, z+2, 57)
+    mc.setBlocks(x-2, y-1, z, x+2, y+1, z+24, m)
+    mc.setBlocks(x-1, y-2, z, x+1, y+2, z+20, m)
+    mc.setBlocks(x-1, y-1, z-1, x+1, y+1, z+2, 57)
 
 def engine(mc,x,y,z,m):  
-	l = 0
-	while ( l < 25):
-		newm = m
-		if (l > 20):
-			newm = 43
-		if( l == 10):
-			newm = 49
-		mc.setBlock(x-1, y, z+l, newm)
-		mc.setBlock(x, y, z+l, newm)
-		mc.setBlock(x+1, y, z+l, newm)
-		mc.setBlock(x, y+1, z+l, newm)
-		mc.setBlock(x, y-1, z+l, newm)
-		l = l + 1
+    l = 0
+    while ( l < 25):
+        newm = m
+        if (l > 20):
+            newm = 43
+        if( l == 10):
+            newm = 49
+        mc.setBlock(x-1, y, z+l, newm)
+        mc.setBlock(x, y, z+l, newm)
+        mc.setBlock(x+1, y, z+l, newm)
+        mc.setBlock(x, y+1, z+l, newm)
+        mc.setBlock(x, y-1, z+l, newm)
+        l = l + 1
 
-	
+    
 def posta(mc,x,y,z,m):  
-	l = 0
-	for k in range(0,4):	
-		mc.setBlocks(x-1,y+k,z-l,x+1,y+k,z-l+4,m)
-		l = l + 2
+    l = 0
+    for k in range(0,4):    
+        mc.setBlocks(x-1,y+k,z-l,x+1,y+k,z-l+4,m)
+        l = l + 2
 
 def postb(mc,x,y,z,m):  
-	l = 0
-	h = 0
-	for k in range(0,4):	
-		mc.setBlocks(x+1+h,y+k,z,x+2+h,y+k,z+3,m)
-		h = h + 1
-	h = 0
-	for k in range(0,4):	
-		mc.setBlocks(x-1+h,y+k,z,x-2+h,y+k,z+3,m)
-		h = h - 1
-	
+    l = 0
+    h = 0
+    for k in range(0,4):    
+        mc.setBlocks(x+1+h,y+k,z,x+2+h,y+k,z+3,m)
+        h = h + 1
+    h = 0
+    for k in range(0,4):    
+        mc.setBlocks(x-1+h,y+k,z,x-2+h,y+k,z+3,m)
+        h = h - 1
+    
 def disc (mc, x, y, z,c,zstop,m):
-	xadj =  c / 2
-	zadd = c / 2
-	print (c,xadj,zadd);
-	#l is used to add to the z value
-	l2 = int(c/2) # half way
-	for l in range(int(zadd),0,-2):
-		#set blocks low to high
-		print(x,y,z-l+zadd)
-		mc.setBlocks(x-xadj,y,z-l+zadd,x+xadj,y,z-l+zadd,m)
-		mc.setBlocks(x-xadj,y,z-l-1+zadd,x+xadj,y,z-l-1+zadd,m)
-		#sleep(1)
-		# mirror
-		mc.setBlocks(x-xadj,y,z+l-zadd,x+xadj,y,z+l-zadd,m)
-		mc.setBlocks(x-xadj,y,z+l-zadd-1,x+xadj,y,z+l-zadd-1,m)
-		xadj = xadj - 2
-		l2 = l2 + 2
-		print ("xadj",xadj,"l",l)
-		if xadj < zstop:
-			break
+    xadj =  c / 2
+    zadd = c / 2
+    #print (c,xadj,zadd);
+    #l is used to add to the z value
+    l2 = int(c/2) # half way
+    for l in range(int(zadd),0,-2):
+        #set blocks low to high
+        #print(x,y,z-l+zadd)
+        mc.setBlocks(x-xadj,y,z-l+zadd,x+xadj,y,z-l+zadd,m)
+        mc.setBlocks(x-xadj,y,z-l-1+zadd,x+xadj,y,z-l-1+zadd,m)
+        #sleep(1)
+        # mirror
+        mc.setBlocks(x-xadj,y,z+l-zadd,x+xadj,y,z+l-zadd,m)
+        mc.setBlocks(x-xadj,y,z+l-zadd-1,x+xadj,y,z+l-zadd-1,m)
+        xadj = xadj - 2
+        l2 = l2 + 2
+        #print ("xadj",xadj,"l",l)
+        if xadj < zstop:
+            break
 
 def main():
-	mc = init()
-	mc.player.setPos(0, 50, 0)
-	x, y, z = mc.player.getPos()  
-	mc.player.setPos(x, y, z)
-	h,k,l = 30,30,30
-	clear_with_air(mc, x,y,z,h,k,l)
-	disc(mc, x,y-1,z,20,4,42)
-	disc(mc, x,y,z,30,4,42)
-	disc(mc, x,y+1,z,14,2,42)
-	posta(mc, x,y-5,z+4,42)
-	core(mc,x,y-7,z,42)
-	postb(mc,x,y-4,z+15,42)
-	engine(mc,x-5,y,z+15,42)
-	engine(mc,x+5,y,z+15,42)
-	mc.player.setPos(0,70,0)   
-	
+    mc = init()
+    mc.player.setPos(0, 50, 0)
+    x, y, z = mc.player.getPos()  
+    mc.player.setPos(x, y, z)
+    h,k,l = 30,30,30
+    clear_with_air(mc, x,y,z,h,k,l)
+    disc(mc, x,y-1,z,20,4,42)
+    disc(mc, x,y,z,30,4,42)
+    disc(mc, x,y+1,z,14,2,42)
+    posta(mc, x,y-5,z+4,42)
+    core(mc,x,y-7,z,42)
+    postb(mc,x,y-4,z+15,42)
+    engine(mc,x-5,y,z+15,42)
+    engine(mc,x+5,y,z+15,42)
+    mc.player.setPos(0,70,0)   
+    
 main()
 # multiple line comment
 """
