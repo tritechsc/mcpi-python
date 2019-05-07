@@ -1,62 +1,31 @@
 # Base project format.
-# put this on the desktop : git clone https://github.com/tritechsc/mcpi
+# 127.0.0.1 is locahost (the computer you are working on)
 from mcpi.minecraft import Minecraft
 from mcpi import block
 from time import sleep
 
-def init():
+# create an object name mc (minecraft)
+def init(): 
     mc = Minecraft.create("127.0.0.1", 4711)
-    x, y, z = mc.player.getPos()		
+    x, y, z = mc.player.getPos()        
     return mc
 
-def clear_with_air_up(mc, x, y, z,h,k,l):
-	air = 0;
-	mc.setBlocks(x-h,y,z,x+h,y+k,z+l,air)	
+def build (mc, x, y, z):
+    # s start , e end m material  , w width m material 
+    m = 1
+    
+    mc.setBlock(x+1,y,z+1,m);
+    mc.setBlock(x+1,y+2,z+1,m + 1);
+    mc.setBlock(x+1,y+4,z+1,m + 2);
 
-def clear_with_air_block(mc, x, y, z,h,k,l):
-	air = 0;
-	mc.setBlocks(x-h,y-k,z-l,x+h,y+k,z+l,air)	
-	
-def core(mc,x,y,z,m):
-	pass
-
-def engine(mc,x,y,z,m):
-	pass
-
-def posta(mc,x,y,z,m):
-	pass
-
-def postb(mc,x,y,z,m):
-	pass
-
-def layer (mc, x, y, z, s ,e,w, m):
-	# s start , e end m material  , w width m material 
-	w = int(w/2)
-	print("w ",w)
-	mc.setBlocks(x-w,y,z+s,x+w,y,z+e-1,m)
-
-def body(mc,x, y, z):
-	clear_with_air_up(mc, x, y, z,5,7,15)
-	s,e,w = 0,11,5
-	layer(mc, x,y,z+2,s,e,w,42)
-	y  = y + 1; s,e,w = 0,11,7
-	layer(mc, x,y,z+2,s,e,w,42)
-	
+    
 def main():
-	mc = init()
-	#mc.player.setPos(0, 50, 0)
-	# x, y, z = mc.player.getPos()
-	# mc.player.setPos(x, y, z)
-	x, y, z = mc.player.getPos()
-	print("position ",x,y,z)
-	#clear_with_air(mc,x,y,s,e,k,l)
-	body(mc, x,y,z)
-	#posta(mc, x,y-5,z+4,42)
-	#core(mc,x,y-7,z,42)
-	#postb(mc,x,y-4,z+15,42)
-	#engine(mc,x-5,y,z+15,42)
-	#mc.player.setPos(0,70,0)
-
+    mc = init()
+    x, y, z = mc.player.getPos()
+    print("position ",x,y,z)
+    build(mc, x,y,z)
+    
+ 
 main()
 
 # multiple line comment
@@ -134,3 +103,5 @@ FENCE_GATE          107
 GLOWING_OBSIDIAN    246
 NETHER_REACTOR_CORE 247
 """
+
+
