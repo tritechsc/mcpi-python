@@ -2,7 +2,7 @@
 
 Minecraft Python on the Raspberry Pi
 Your can clone this version of Minecraft Pi to un on your Desktop
-https://github.com/tritechsc/mcpi
+https://github.com/tritechsc/mcpi-app
 <hr />
 This repository is for using Minecraft to teach and experiment with coding in Python and Networking.
 
@@ -12,7 +12,8 @@ https://www.raspberrypi.org/learning/getting-started-with-minecraft-pi/worksheet
 
 http://www.stuffaboutcode.com/p/minecraft-api-reference.html
 
-Screenshots: cd ~/ ;git clone https://github.com/AndrewFromMelbourne/raspi2png;
+#Screenshots: cd ~/ ;git clone https://github.com/AndrewFromMelbourne/raspi2png;
+curl -sL https://raw.githubusercontent.com/AndrewFromMelbourne/raspi2png/master/installer.sh | bash -
 Select and copy then pase in tty
 <pre>
 Partlist:
