@@ -1,9 +1,8 @@
-#cwc
+#Juan Barraza
 from mcpi.minecraft import Minecraft
 from mcpi import block    
 
-mc = Minecraft.create()
-                                            
+mc = Minecraft.create("10.183.0.2", 4711)                                           
 x, y, z = mc.player.getPos()  
 zz = z + 1
 
