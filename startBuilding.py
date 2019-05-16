@@ -5,28 +5,15 @@ from mcpi.minecraft import Minecraft
 from mcpi import block
 from time import sleep
 
-# create an object name mc (minecraft)
-def init(): 
-    mc = Minecraft.create("127.0.0.1", 4711)
-    x, y, z = mc.player.getPos()        
-    return mc
+mc = Minecraft.create("127.0.0.1", 4711)
+x, y, z = mc.player.getPos()        
 
-def build (mc, x, y, z):
-    # s start , e end m material  , w width m material 
-    m = 1
-    mc.setBlock(x+1,y,z+1,m);
-    mc.setBlock(x+1,y+2,z+1,m + 1);
-    mc.setBlock(x+1,y+4,z+1,m + 2);
+# b is a variable for the type of block
+b = 1
+mc.setBlock(x,y,z+1,b);
+mc.setBlock(x,y+2,z+1,b + 1);
+mc.setBlock(x,y+4,z+1,b + 2);
 
-    
-def main():
-    mc = init()
-    x, y, z = mc.player.getPos()
-    print("position ",x,y,z)
-    build(mc, x,y,z)
-    
- 
-main()
 
 # multiple line comment
 """
