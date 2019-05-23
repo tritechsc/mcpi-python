@@ -1,4 +1,4 @@
-
+# Code by CW Coleman
 # Base project format.
 # 127.0.0.1 is locahost (the computer you are working on)
 from mcpi.minecraft import Minecraft
@@ -6,14 +6,22 @@ from mcpi import block
 from time import sleep
 
 mc = Minecraft.create("127.0.0.1", 4711)
+# This sets the x,y and z location to set blocks.
 x, y, z = mc.player.getPos()        
 
+# Clear with ait (air = 0)
+air = 0
+mc.setBlocks(x-10,y, z-10, x+10, y+20, z+10,air)
 # b is a variable for the type of block
+# create single blocks
 b = 1
 mc.setBlock(x,y,z+1,b);
 mc.setBlock(x,y+2,z+1,b + 1);
 mc.setBlock(x,y+4,z+1,b + 2);
-
+# Create multiple blocks .  
+# Notice 'w = 35,2' .  This is wool.
+b = 35,2 
+mc.setBlocks(x,y+5, z, x+5, y+20, z+5,b)
 
 # multiple line comment
 """
