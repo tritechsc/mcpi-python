@@ -1,0 +1,5 @@
+#!/bin/bash
+cd ~/Desktop;
+rm -fR mcpi-python;
+git clone https://github.com/tritechsc/mcpi-python;
+
