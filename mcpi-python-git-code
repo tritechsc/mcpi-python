@@ -1,5 +1,7 @@
 #!/bin/bash
 cd ~/Desktop;
-rm -fR mcpi-python;
+rm -fR mcpi-python/;
 git clone https://github.com/tritechsc/mcpi-python;
+cd ~/Desktop/mcpi-python/;
+chmod 755 -R *;
 
