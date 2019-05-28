@@ -1,0 +1,5 @@
+#!/bin/bash
+ DATE=$(date +"%Y-%m-%d_%H_%M_%S");
+ echo $DATE;
+ /home/pi/raspi2png/raspi2png -p /home/pi/Desktop/screenShots/$DATE.png -d2
+
