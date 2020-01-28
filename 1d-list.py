@@ -1,63 +1,33 @@
 # Base project format.
-# put this on the desktop : git clone https://github.com/tritechsc/mcpi
+# Documentation https://github.com/raspberrypilearning/getting-started-with-minecraft-pi/blob/master/worksheet.md
 from mcpi.minecraft import Minecraft
 from mcpi import block
 from time import sleep
 
 def init():
     mc = Minecraft.create("127.0.0.1", 4711)
+    # make blocks so they can not be destroyed
     mc.setting("world_immutable",True)
     #x, y, z = mc.player.getPos()        
     return mc
 
-def matrixFront(mc,x,y,z):
-    m = [[1,1,1,1,1,1,1,1,1,1],
-     [0,1,1,1,1,1,1,1,1,1],
-     [0,0,0,0,0,0,0,0,1,1],
-     [1,1,1,1,1,1,1,0,0,1],
-     [1,1,1,0,1,1,1,0,1,1],
-     [1,1,1,0,1,1,1,0,0,1],
-     [1,1,1,0,0,0,0,0,1,1],
-     [1,1,1,1,1,1,1,0,0,1],
-     [1,1,1,1,1,1,1,1,0,1],
-     [1,1,1,1,1,1,1,1,1,1]]
+def blockFunction(mc,x,y,z):
+    # m is a one dimentional list (array)
+    m = [1,1,2,3,5,8,13,21,34,55]
     print(m)
-    for k in range (0,10):
-        for l  in range (0,10):
-            print(m[k][l],end="")
-            mc.setBlocks(x-1,y+k,z+l,x+1,y+k,z+l,m[k][l])
-    print()
-
-
-def matrixTop(mc,x,y,z):
-    m = [[1,1,1,1,1,1,1,1,1,1],
-     [0,1,1,1,1,1,1,1,1,1],
-     [0,0,0,0,0,0,0,0,1,1],
-     [1,1,1,1,1,1,1,0,0,1],
-     [1,1,1,0,1,1,1,0,1,1],
-     [1,1,1,0,1,1,1,0,0,1],
-     [1,1,1,0,0,0,0,0,1,1],
-     [1,1,1,1,1,1,1,0,0,1],
-     [1,1,1,1,1,1,1,1,0,1],
-     [1,1,1,1,1,1,1,1,1,1]]
-    print(m)
-    for h in range (0,10):
-        for l  in range (0,10):
-            print(m[h][l],end="")
-            mc.setBlocks(x+h,y-5, z+l, x+h,y+20,z+l,m[h][l])
-
-    print()
-    mc.setBlocks(x-1,y-5, z-1, x+11,y-5,z+11,89)
-    mc.setBlocks(x-1,y+10, z-1, x+11,y+10,z+11,89)
-    mc.setBlocks(x-1,y+20, z-1, x+11,y+20,z+11,89)
-
-
+    for k in range (0,len(m)):
+            print(m[k]," ",end="")
+            mc.setBlock(x,y,z+k,m[k])
+            
 def main():
     mc = init()
-    x,y,z = mc.player.getPos()
-    #matrixTop(mc, x,y,z)
-    matrixFront(mc,x,y,z)
-    mc.player.setPos(x,y+20,z-10)
+    pos = mc.player.getPos()
+    mc.postToChat(pos)
+    x,y,z = mc.player.getPos() 
+    blockFunction(mc,x+5,y+5,z+5)
+    # move to a new location - maybe ???
+    h,k,l = x,y+50,z
+    mc.player.setPos(h,k,l) 
 
 if __name__ == "__main__":
     main()
