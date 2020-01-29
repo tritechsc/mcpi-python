@@ -8,17 +8,17 @@ def init():
     mc = Minecraft.create("127.0.0.1", 4711)
     # make blocks so they can not be destroyed
     mc.setting("world_immutable",True)
-    #x, y, z = mc.player.getPos()        
+    #x, y, z = mc.player.getPos()
     return mc
 
 def blockFunction(mc,x,y,z):
     # m is a one dimentional list (array)
     m = [1,1,2,3,5,8,13,21,34,55]
-    print(m)
-    for k in range (0,len(m)):
-            print(m[k]," ",end="")
-            mc.setBlock(x,y,z+k,m[k])
-            
+    print("LIST m LENGTH = ",len(m))
+    for l in range (0,len(m)):
+            print(m[l]," ",end="")
+            mc.setBlock(x,y,z+l,m[l])
+
 def main():
     mc = init()
     pos = mc.player.getPos()
