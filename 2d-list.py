@@ -10,16 +10,16 @@ def init():
     #x, y, z = mc.player.getPos()        
     return mc
 
-def matrixY(mc,x,y,z):
-    m = [[1,1,1,1,1,1,1,1,1,1],
-        [1,1,1,7,7,7,7,1,1,1],
-        [1,1,1,7,7,7,7,1,1,1],
+def matrixZ(mc,x,y,z):
+    m = [[5,5,1,1,1,1,1,1,4,4],
+        [5,5,7,7,7,7,7,7,4,4],
+        [1,1,7,7,7,7,7,7,1,1],
         [1,1,1,1,7,7,1,1,1,1],
         [1,1,1,1,7,7,1,1,1,1],
         [1,1,1,1,7,7,1,1,1,1],
         [1,1,1,1,7,7,1,1,1,1],
-        [1,1,1,7,7,7,7,1,1,1],
-        [1,1,1,7,7,7,7,1,1,1],
+        [1,1,7,7,7,7,5,5,1,1],
+        [1,1,7,7,7,7,5,5,1,1],
         [1,1,1,1,1,1,1,1,1,1]]
     print(m)
     for k in range (0,10):
@@ -28,10 +28,12 @@ def matrixY(mc,x,y,z):
             theBlock = m[k][l]
             if (theBlock == 7):
                 theBlock = 79;
-            mc.setBlock(x,y+k,z+l,theBlock)
+            if (theBlock == 4):
+                theBlock = 14;
+            mc.setBlock(x,9+y-k,z+l,theBlock)
     print()
 
-def matrixZ(mc,x,y,z):
+def matrixY(mc,x,y,z):
     m = [[1,1,1,1,1,1,1,1,1,1],
         [0,1,1,1,1,1,1,1,1,1],
      [0,0,0,0,0,0,0,0,1,1],
@@ -58,9 +60,9 @@ def main():
     mc = init()
     x,y,z = mc.player.getPos()
     matrixZ(mc,x,y,z)
-    mc.player.setPos(x,y+20,z-10)
+    mc.player.setPos(x,y,z-2)
     x = x -20
-    matrixY(mc,x,y,z)
+    #matrixY(mc,x,y,z)
 
 if __name__ == "__main__":
     main()
