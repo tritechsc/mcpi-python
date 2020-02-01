@@ -1,5 +1,6 @@
 # Cyber Minecraft Pi Project Part 1
 # Documentation https://github.com/raspberrypilearning/getting-started-with-minecraft-pi/blob/master/worksheet.md
+# -1.0 Remove ~/Desktop/mcpi-app and ~/Desktop/mcpi-python and reclone both.  Do not save files in these folders.
 # 0. Create folder on /home/pi/Desktop for your python code.  Use you name, intials, or StevePi name.
 # 1. Use the following format to create a Minecraft object that looks like something we see in the world or universe.
 # * Code must be posted somewhere on your github site.
