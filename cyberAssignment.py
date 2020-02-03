@@ -13,17 +13,20 @@
 # * wool = 35; n = 5 (This is an example of how to use wool.)
 # 6. Use 1 or more mc.setBlocks(x,y, z,h,k,l, wool,n) commands.
 # 7. Use 1 for loop, 1 while loop and 1 if condition.
+# * * * * * * * 
+# * * install ascii  -> sudo apt install ascii  -> then run ascii
 # 8.  Modify mcpi-app to mcpi-1234567 where 1234567 is your StevePi name. 
-# * Clone https://github.com/tritechsc/mcpi-python.git to /home/pi/Desktop.
+# * Clone https://github.com/tritechsc/mcpi-app.git to /home/pi/Desktop.
 # *. Copy mcpi-app to mcpi-1234567 where username is 1234567. User name must be 7 characters.
 # * cp -fR mcpi-app mcpi-1234567
 # 9. Modify mincraft-pi to display a unique 7 charater name as follows:
 '''copy minecraft-pi to a location to edit cp -fR mcpi-app mcpi-1234567
 hexdump -ve '1/1 "%.2X"' minecraft-pi > mcpi.txt;
-sed -i "s/53746576655069/496365426f776c/g" mcpi.txt;
+sed -i "s/53746576655069/31323334353637/g" mcpi.txt;
 xxd -r -p mcpi.txt > minecraft-pi.bin;
 cp minecraft-pi.bin minecraft-pi;
 chown pi:pi minecraft-pi;
+chmod a+x minecraft-pi;
 '''
 # 10. Change the skin of the char.png image in your ~/Desktop/mcpi-1234567 directory using GIMP.
 # * Export the file as a char.png
