@@ -21,12 +21,13 @@
 # * cp -fR mcpi-app mcpi-1234567
 # 9. Modify mincraft-pi to display a unique 7 charater name as follows:
 '''copy minecraft-pi to a location to edit cp -fR mcpi-app mcpi-1234567
-hexdump -ve '1/1 "%.2X"' minecraft-pi > mcpi.txt;
-sed -i "s/53746576655069/31323334353637/g" mcpi.txt;
-xxd -r -p mcpi.txt > minecraft-pi.bin;
-cp minecraft-pi.bin minecraft-pi;
-chown pi:pi minecraft-pi;
-chmod a+x minecraft-pi;
+hexdump -ve '1/1 "%.2X"' minecraft-pi > mcpi.txt
+sed -i "s/53746576655069/31323334353637/g" mcpi.txt
+xxd -r -p mcpi.txt > minecraft-pi.bin
+rm minecraft-pi
+cp minecraft-pi.bin minecraft-pi
+chown pi:pi minecraft-pi
+chmod a+x minecraft-pi
 '''
 # 10. Change the skin of the char.png image in your ~/Desktop/mcpi-1234567 directory using GIMP.
 # * Export the file as a char.png
