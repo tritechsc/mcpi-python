@@ -24,11 +24,11 @@ def output2d(mc,mList,x,y,z):
                 theBlock = 79
             if (theBlock == "0"):
                 theBlock = 1
-            mc.setBlock(x,9+y-k,z+l,theBlock)
+            mc.setBlock(x,9+y-k,z+l,35,theBlock)
     #print()
 
 def main():
-    CLR = ["0000000000",
+  CLR = ["0000000000",
           "0000000000",
           "0000000000",
           "0000000000",
@@ -38,7 +38,8 @@ def main():
           "0000000000",
           "0000000000",
           "0000000000"]
-  L =   ["0011000000",
+          
+  L =["0011000000",
          "0011111100",
          "0011001100",
          "0011001100",
@@ -49,7 +50,7 @@ def main():
          "0011111100",
          "0011111000"]
          
-    D = ["0011111000",
+  D = ["0011111000",
          "0011111100",
          "0011001100",
          "0011001100",
@@ -60,7 +61,7 @@ def main():
          "0011111100",
          "0011111000"]
          
-    I =  ["0011111100",
+  I =  ["0011111100",
           "0011111100",
           "0000110000",
           "0000110000",
@@ -71,7 +72,7 @@ def main():
           "0011111100",
           "0011111100"]
           
-    K =  ["0011000100",
+  K =  ["0011000100",
           "0011001100",
           "0011011000",
           "0011110000",
@@ -81,14 +82,14 @@ def main():
           "0011011000",
           "0011001100",
           "0011000100"]
-    mc = init()
-    x,y,z = mc.player.getPos()
-    clearAir(mc,x,y,z)
-    output2d(mc,I,x,y+17,z)
-    output2d(mc,D,x,y+6,z)
-    output2d(mc,K,x,y-5,z)
-    mc.player.setPos(x-7,y+5,z+5)
-    x = x -20
+  mc = init()
+  x,y,z = mc.player.getPos()
+  clearAir(mc,x,y,z)
+  output2d(mc,I,x,y+17,z) 
+  output2d(mc,D,x,y+6,z)
+  output2d(mc,K,x,y-5,z)
+  mc.player.setPos(x-7,y+5,z+5)
+  x = x -20
     #matrixY(mc,x,y,z)
 
 if __name__ == "__main__":
