@@ -1,0 +1,12 @@
+def createSphere(r,mc):
+	N=200
+	lst = []
+	thetas = [(2*pi*i)/N for i in range(N)]
+	phis = [(pi*i)/N for i in range(N)]
+	x1,y1,z1=mc.player.getPos()
+	for theta in thetas:
+		for phi in phis:
+			x = (r * sin(phi) * cos(theta)) + x1
+			y = r * sin(phi) * sin(theta) +y1
+			z = r * cos(phi) + z1
+			mc.setBlock(x,y,z,30)
