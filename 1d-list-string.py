@@ -86,7 +86,7 @@ def main():
           "1        1",
           "          "]
           
-	K =  ["0011000100",
+  K =  ["0011000100",
           "0011001100",
           "0011011000",
           "0011110000",
@@ -103,7 +103,7 @@ def main():
   output2d(mc,I,x,y+17,z) 
   output2d(mc,D,x,y+6,z)
   output2d(mc,K,x,y-5,z)
-  mc.player.setPos(x-7,y+5,z+5)
+  mc.player.setPos(0,50,0)
   x = x -20
     #matrixY(mc,x,y,z)
 
