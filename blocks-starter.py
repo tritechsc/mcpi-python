@@ -2,68 +2,13 @@
 # Documentation https://github.com/raspberrypilearning/getting-started-with-minecraft-pi/blob/master/worksheet.md
 from mcpi.minecraft import Minecraft
 from mcpi import block
-from time import sleep
 
-def init():
-    #ip = "192.168.7.84"
-    ip = "127.0.0.1"
-    mc = Minecraft.create(ip, 4711)
-    #mc.setting("world_immutable",True)
-    #x, y, z = mc.player.getPos()        
-    return mc
-    
-def clearAir(mc,x,y,z):
-    mc.setBlocks(x-10,y-5,z-20,x+10,y+20,z+20,0)
-    mc.setBlocks(-128,-3,-128,128,64,128,0)
-    for k in range (-10,0,1):
-        m = 2
-        if k < -5:
-            m = 7
-        if k > -3 and k < -1 :
-            m = 3
-        mc.setBlocks(-128,k,-128,127,k,127,m)
-    mc.postToChat("World Cleared!!!!")
-
-
-  
-
-def truck(mc,x,y,z):
-  
-  X = ["      1111111   ",
-       "      11    11  ",
-       "      11    111 ",
-       "1111111111111112",
-       "1111111111111112",
-       "1   11   11   12"]
-      #"0123456789ABCDEF"
-  #print(X)
-  for k in range (0,6):
-    for l  in range (0,16):
-      print(X[k][l],end="")
-      theBlock = X[k][l]
-      m = 0
-      if (theBlock == "1"):
-        m = 6
-      if (theBlock == "2"):
-        m = 5
-      if m == 0:
-        mc.setBlocks(x-3,15-y-k,z+l,x+3,15-y-k,z+l,0)
-      else:
-        mc.setBlocks(x-3,15-y-k,z+l,x+3,15-y-k,z+l,35,m)
-    print()
-    
-def main():
-         
-  mc = init()
-  x,y,z = mc.player.getPos()
-  clearAir(mc,x,y,z)
-  truck(mc,0,0,5)
-  mc.player.setPos(0,0,0)
-  mc.player.setPos(0,15,0)
-
-
-if __name__ == "__main__":
-    main()
+ip = "127.0.0.1"
+mc = Minecraft.create(ip, 4711)
+mc.player.setPos(0,0,0)
+mc.setBlocks(-128,-3,-128,128,64,128,0)
+mc.setBlocks(10,10,10,20,20,20,1)
+mc.player.setPos(0,100  ,0)
 
 '''
 #API Blocks
