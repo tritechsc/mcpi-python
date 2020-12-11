@@ -131,6 +131,10 @@ QUARTZ_STAIRS       156
 STONE_CUTTER        245
 BONE_MEAL           351
 
+wool 35,0 is white
+
+
+
 If you have imported the “block” library at the top of your script like this :
 
 import mcpi.block as block
