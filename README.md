@@ -138,4 +138,24 @@ import mcpi.block as block
 you can call up the blocks in the “API Block List” using the following syntax :
 
 block.MELON.id
+
+=======================
+wool 35,0  WHITE
+wool 35,1  ORGANE
+wool 35,2  DARK PINK 
+wool 35,3  LIGHT BLUE 
+wool 35,4  YELLOW
+wool 35,5  GREEN
+wool 35,6  LIGHT PINK
+wool 35,7  DARK GRAY
+wool 35,8  LIGHT GRAY
+wool 35,9  TEAL OR DARKER BLUE 
+wool 35,10 VIOLET
+wool 35,11  DARK BLUE
+wool 35,12  BROWN
+wool 35,13  DARK GREEN
+wool 35,14  RED
+wool 35,15  BLACK
+
+
 </pre>
