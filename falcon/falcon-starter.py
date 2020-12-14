@@ -1,22 +1,31 @@
-# Base project format.
-# Documentation https://github.com/raspberrypilearning/getting-started-with-minecraft-pi/blob/master/worksheet.md
+# cwc falcon
 from mcpi.minecraft import Minecraft
 from mcpi import block
 
 ip = "127.0.0.1"
 mc = Minecraft.create(ip, 4711)
+mc.player.setPos(0,0,0)
 x, y, z = mc.player.getPos() 
+xyzString = str(x)+" , "+str(y)+" , "+str(z)
+mc.postToChat(xyzString)
 # clear air
 print(x,y,z)
-
+xs,ys,zs = x,y,z
 #clear ait
-mc.setBlocks(x-10,y-1,z-10,x+10,y+64,+10,0)
+mc.setBlocks(x-10,y,z-10,x+10,y+64,+10,0)
 #blocks
-for k in range (0,6):
-	mc.setBlocks(x+1,y+k,z+2,x-1,y+k,z+2,35,k)
-	mc.setBlocks(x+2,y+k,z-1,x+2,y+k,z+1,35,k)
-	mc.setBlocks(x+1,y+k,z-2,x-1,y+k,z-2,35,k)
-	mc.setBlocks(x-2,y+k,z-1,x-2,y+k,z+1,35,k)
+for k in range (1,40):
+	mc.setBlocks(x+1,y+k,z+2,x-1,y+k,z+2,35,0) #back
+	mc.setBlocks(x+2,y+k,z-1,x+2,y+k,z+1,35,0) #left
+	mc.setBlocks(x+1,y+k,z-2,x-1,y+k,z-2,35,0) #front
+	mc.setBlocks(x-2,y+k,z-1,x-2,y+k,z+1,35,0) #right
+
+#base
+mc.setBlocks(xs+1,ys,zs-1,xs-1,ys+1,zs+1,35,15) #base
+#top
+mc.setBlocks(xs+1,ys+39,zs-1,xs-1,ys+40,zs+1,35,0)
+mc.setBlock(xs,ys+41,zs,35,)
+mc.player.setPos(0,40,-5)
 '''
 #API Blocks
 #====================
