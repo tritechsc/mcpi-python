@@ -7,7 +7,7 @@ mc = Minecraft.create()
 mc.player.setPos(0,0,0)
 mc.postToChat("CLEAR AN AREA WITH AIR TO BUILD")
 air = 0
-mc.setBlocks(-17,0,-17,17,64,17,air) # clear some air
+mc.setBlocks(-19,0,-19,19,64,19,air) # clear some air
 #x, y, z = mc.player.getTilePos()                                                  
 x, y, z = mc.player.getPos()
 mc.postToChat("PLAYER POSITION")
