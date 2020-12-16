@@ -1,58 +1,55 @@
-#!/usr/bin/env python3
-# Base project format.
-# while loop example
+import time
 from mcpi.minecraft import Minecraft
 from mcpi import block
 
-ip = "127.0.0.1"
-mc = Minecraft.create(ip, 4711)
+mc = Minecraft.create()
+# set player to 0,0,0
 mc.player.setPos(0,0,0)
-mc.setBlocks(-127,0,-127,128,64,128,0)
+# CLEAR AN AREA WITH AIR TO BUILD
+air = 0
+mc.setBlocks(-19,0,-19,19,64,19,air) # clear some air                                               
+x, y, z = mc.player.getPos()
+xyzString = str(x)+" , "+str(y)+" , "+str(z)
+print(xyzString)
+# mc.setBlock (x,y,z, material_number) 
 
-mc.player.setPos(0,0,0)
-x,y,z = 0,0,0
-color = 0
+# Lay blocks flat on ground
+mc.setBlock(0,0,0,35,0) 	# WHITE   0,  0,  0
+mc.setBlock(1,0,1,35,1) 	# ORANGE  2,  0,  2
+mc.setBlock(-1,0,1,35,2) 	# PINK   -2,  0,  2
+mc.setBlock(-1,0,-1,35,3) 	# BLUE   -2,  0, -2
+mc.setBlock(1,0,-1,35,4)  	# YELLOW  2,  0, -2
 
-# loop 1 * * * * * * * *
-count = 0
-while(count < 10):
-	mc.setBlock(x, y+1, z+count,35,color)
-	# 35,color set the wool color
-	color = color + 1
-	count = count + 1
-# end while loop
+#  Lay block in the air 
+mc.setBlock(0,2,2,35,0) 	# WHITE   0,  0,  0
+mc.setBlock(1,3,2,35,1) 	# ORANGE  2,  0,  2
+mc.setBlock(-1,3,2,35,2) 	# PINK   -2,  0,  2
+mc.setBlock(-1,1,2,35,3) 	# BLUE   -2,  0, -2
+mc.setBlock(1,1,2,35,4)  	# YELLOW  2,  0, -2
 
-# loop 2 * * * * * * * *
-count = 0
-while(count < 10):
-	mc.setBlock(x+1, y+1, z+count,35,color)
-	# 35,color set the wool color
-	color = color + 1
-	count = count + 1
-# end while loop
+mc.player.setPos(0,0,-5)
 
-# loop 3 * * * * * * * *
-count = 0
-while(count < 10):
-	mc.setBlock(x+2, y+1, z+count,35,color)
-	# 35,color set the wool color
-	color = color + 1
-	count = count + 1
-# end while loop
 
-# loop 4 * * * * * * * *
-count = 0
-while(count < 10):
-	mc.setBlock(x+2, y+5, z+count,35,color)
-	# 35,color set the wool color
-	color = color + 1
-	count = count + 1
-# end while loop
-
-# add 7 more while loop blocks
-
-mc.player.setPos(0,20,0)
 '''
+wool 35,0  WHITE
+wool 35,1  ORGANE
+wool 35,2  DARK PINK 
+wool 35,3  LIGHT BLUE 
+wool 35,4  YELLOW
+wool 35,5  GREEN
+wool 35,6  LIGHT PINK
+wool 35,7  DARK GRAY
+wool 35,8  LIGHT GRAY
+wool 35,9  TEAL OR DARKER BLUE 
+wool 35,10 VIOLET
+wool 35,11  DARK BLUE
+wool 35,12  BROWN
+wool 35,13  DARK GREEN
+wool 35,14  RED
+wool 35,15  BLACK
+
+
+#mc.setBlocks(-128,0,-128,128,64,128,0)
 #API Blocks
 #====================
 #   AIR                   0
@@ -127,7 +124,11 @@ mc.player.setPos(0,20,0)
 #   FENCE_GATE          107
 #   GLOWING_OBSIDIAN    246
 #   NETHER_REACTOR_CORE 247
-'''
 
 
-
+mc.setBlock(0,0,5,35,0) 	# WHITE   0,  0,  0
+mc.setBlock(2,2,5,35,1) 	# ORANGE  2,  0,  2
+mc.setBlock(-2,2,5,35,2) 	# PINK   -2,  0,  2
+mc.setBlock(-2-2,5,35,3) 	# BLUE   -2,  0, -2
+mc.setBlock(2,-2,5,35,4)  	# YELLOW  2,  0, -2
+''' 
