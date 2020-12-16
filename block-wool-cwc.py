@@ -35,7 +35,7 @@ mc.postToChat("PLAYER POSITION SET TO 0,10,0")
 mc.player.setPos(0,1,-10)
 time.sleep(5)
 for h in range (0,33):
-	time.sleep(1)
+	#time.sleep(1)
 	mc.setBlock(h-16,0,-5,35,h)
 	mc.postToChat(h)
 
