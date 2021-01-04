@@ -42,7 +42,7 @@ for h in range (0,33):
 
 '''
 wool 35,0  WHITE
-wool 35,1  ORGANE
+wool 35,1  ORANGE
 wool 35,2  DARK PINK 
 wool 35,3  LIGHT BLUE 
 wool 35,4  YELLOW

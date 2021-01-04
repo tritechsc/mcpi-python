@@ -1,32 +1,49 @@
+import time
+import math
 from mcpi.minecraft import Minecraft
 from mcpi import block
 
+def isprime(n):
+    nd = float(n)
+    prime = True
+    pivot = int(math.sqrt(nd))
+    for d in range (2,n):
+        d = float(d)
+        #print ((nd / d),int(nd / d))
+        if ((nd / d) == int(nd / d)):
+            prime = False
+            break
+    return prime
+
 mc = Minecraft.create()
-# set player to 0,0,0
+
 mc.player.setPos(0,0,0)
-# CLEAR AN AREA WITH AIR TO BUILD
+mc.postToChat("CLEAR AN AREA WITH AIR TO BUILD")
 air = 0
-mc.setBlocks(-19,0,-19,19,64,19,air) # clear some air                                               
+mc.setBlocks(-19,0,-19,19,64,19,air) # clear some air
+#x, y, z = mc.player.getTilePos()                                                  
 x, y, z = mc.player.getPos()
+mc.postToChat("PLAYER POSITION")
 xyzString = str(x)+" , "+str(y)+" , "+str(z)
-print(xyzString)
-# mc.setBlock (x,y,z, material_number) 
-
+mc.postToChat(xyzString)
+# mc.setBlock (x,y,z, material) 
+mc.player.setPos(0,5,-5)
 # Lay blocks flat on ground
-mc.setBlock(0,0,0,35,0) 	# WHITE   0,  0,  0
-mc.setBlock(1,0,1,35,1) 	# ORANGE  2,  0,  2
-mc.setBlock(-1,0,1,35,2) 	# PINK   -2,  0,  2
-mc.setBlock(-1,0,-1,35,3) 	# BLUE   -2,  0, -2
-mc.setBlock(1,0,-1,35,4)  	# YELLOW  2,  0, -2
-
-#  Lay block in the air 
-mc.setBlock(0,2,2,35,0) 	# WHITE   0,  0,  0
-mc.setBlock(1,3,2,35,1) 	# ORANGE  2,  0,  2
-mc.setBlock(-1,3,2,35,2) 	# PINK   -2,  0,  2
-mc.setBlock(-1,1,2,35,3) 	# BLUE   -2,  0, -2
-mc.setBlock(1,1,2,35,4)  	# YELLOW  2,  0, -2
-
-mc.player.setPos(0,0,-5)
+xz =  [[0,0],[1,0],[1,1],[0,1],[-1,1],
+	  [-1,0],[-1,-1],[0,-1],[1,-1],[2,-1],
+	  [2,0],[2,1],[2,2],[1,2],[0,2],
+	  [-1,2],[-2,2],[-2,1],[-2,0],[-2,-1],
+	  [-2,-2],[-1,-2],[0,-2],[1,-2],[2,-2],
+	  [3,-2],[3,-1],[3,0],[3,1],[3,2],[3,3]]
+for n in range(len(xz)):
+	print(" n + 1 ",n + 1," ",end="")
+	x = xz[n][0]
+	z = xz[n][1]
+	ip = isprime(n+1)
+	print(n,n+1,ip)
+	print(x,z)
+	mc.setBlock(x,0,z,35,n) 
+		
 
 
 '''
