@@ -4,16 +4,20 @@ from mcpi.minecraft import Minecraft
 from mcpi import block
 
 def isprime(n):
-    nd = float(n)
-    prime = True
-    pivot = int(math.sqrt(nd))
-    for d in range (2,n):
-        d = float(d)
-        #print ((nd / d),int(nd / d))
-        if ((nd / d) == int(nd / d)):
-            prime = False
-            break
-    return prime
+	nd = float(n)
+	prime = True
+	pivot = int(math.sqrt(nd))
+	if n > 1:
+		for d in range (2,n):
+			d = float(d)
+			#print ((nd / d),int(nd / d))
+			if ((nd / d) == int(nd / d) ):
+				prime = False
+				break
+	else:
+		prime = False
+		
+	return prime
 
 mc = Minecraft.create()
 
@@ -40,9 +44,14 @@ for n in range(len(xz)):
 	x = xz[n][0]
 	z = xz[n][1]
 	ip = isprime(n+1)
+	mc.setBlock(x,0,z,80) 
+	if ip == True:
+		print(n+1)
+		mc.setBlock(x,0,z,79) 
+	time.sleep(1)
 	print(n,n+1,ip)
 	print(x,z)
-	mc.setBlock(x,0,z,35,n) 
+	
 		
 
 
