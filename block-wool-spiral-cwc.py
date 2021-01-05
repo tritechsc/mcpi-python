@@ -4,32 +4,28 @@ from mcpi.minecraft import Minecraft
 from mcpi import block
 
 def isprime(n):
-	nd = float(n)
-	prime = True
-	pivot = int(math.sqrt(nd))
-	if n > 1:
-		for d in range (2,n):
-			d = float(d)
-			#print ((nd / d),int(nd / d))
-			if ((nd / d) == int(nd / d) ):
-				prime = False
-				break
-	else:
-		prime = False
-		
-	return prime
+   if n <= 1:
+      return False
+   else:
+      # iterating loop till square root of n
+      for i in range(2, int(math.sqrt(n)) + 1):
+         # checking for factor
+         if n % i == 0:
+            # return False
+            return False
+      # returning True
+      return True
 
 mc = Minecraft.create()
 
 mc.player.setPos(0,0,0)
-mc.postToChat("CLEAR AN AREA WITH AIR TO BUILD")
 air = 0
 mc.setBlocks(-19,0,-19,19,64,19,air) # clear some air
 #x, y, z = mc.player.getTilePos()                                                  
 x, y, z = mc.player.getPos()
-mc.postToChat("PLAYER POSITION")
-xyzString = str(x)+" , "+str(y)+" , "+str(z)
-mc.postToChat(xyzString)
+mc.postToChat("ULAM SPIRAL")
+#xyzString = str(x)+" , "+str(y)+" , "+str(z)
+#mc.postToChat(xyzString)
 # mc.setBlock (x,y,z, material) 
 mc.player.setPos(0,5,-5)
 # Lay blocks flat on ground
@@ -40,18 +36,21 @@ xz =  [[0,0],[1,0],[1,1],[0,1],[-1,1],
 	  [-2,-2],[-1,-2],[0,-2],[1,-2],[2,-2],
 	  [3,-2],[3,-1],[3,0],[3,1],[3,2],[3,3]]
 for n in range(len(xz)):
-	print(" n + 1 ",n + 1," ",end="")
+	#print(" n + 1 ",n + 1," ",end="")
 	x = xz[n][0]
 	z = xz[n][1]
 	ip = isprime(n+1)
 	mc.setBlock(x,0,z,80) 
+	pstr = " is not prime."
 	if ip == True:
-		print(n+1)
+		#print(n+1)
 		mc.setBlock(x,0,z,79) 
+		pstr = " IS PRIME."
 	time.sleep(1)
-	print(n,n+1,ip)
-	print(x,z)
-	
+	#print(n,n+1,ip)
+	#print(x,z)
+	chatstr = str(n+1)+str(pstr)
+	mc.postToChat(chatstr)
 		
 
 
