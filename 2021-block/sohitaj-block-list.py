@@ -35,10 +35,11 @@ def matrix(mc,x,y,z):
     x1 = 10
     for k  in range (0,10):
       theBlock = X[h][k]
+      print(theBlock,end="")
       c = -1  # wool 35,0  WHITE
-      if (theBlock == "1"):
+      if (theBlock == 0):
         c = 0 # wool 35,1  ORANGE
-      if (theBlock == "2"):
+      if (theBlock == 1):
         c = 1 # wool 35,2  DARK PINK 
       if (theBlock == "3"):
         c = 2 # wool 35,3  LIGHT BLUE 
@@ -48,6 +49,7 @@ def matrix(mc,x,y,z):
         c = 5 # wool 35,5  GREEN
       mc.setBlock(x1-x,y1+y,z,35,c)
       x1 = x1 - 1
+    print()
     y1 = y1 - 1
     print()
     
