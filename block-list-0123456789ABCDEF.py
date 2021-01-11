@@ -22,15 +22,15 @@ def clearAir(mc,x,y,z):
 def matrix(mc,x,y,z):
   
   X = ["0123456789",
-       "ABCDEFX012",
+       "ABCDEF-012",
        "3456789ABC",
-       "DEFX012345",
-       "6789ABCDEF",
+       "DEFX01-345",
+       "6789AB-DEF",
        "X012345678",
-       "9ABCDEFX01",
-       "23456789AB",
-       "CDEFX01234",
-       "56789ABCDE"]
+       "9ABC-EFX01",
+       "234-6789AB",
+       "CD-FX01234",
+       "56789A-CDE"]
       #"123456789A"
  
   y1 = 10

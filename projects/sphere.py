@@ -5,7 +5,7 @@ from mcpi import block
 from time import sleep
 
 def init():
-    mc = Minecraft.create("127.0.0.1", 4711)
+    mc = Minecraft.create("10.183.0.8", 4711)
     return mc
     
 def sphere(mc,x,y,z):
