@@ -17,28 +17,28 @@ def clearAir(mc,x,y,z):
   #mc.setBlocks(-128,-3,-128,128,64,128,0)
 
 def matrix(mc,x,y,z):
-
-  X = ["xxxFFFFxxx",
-       "xxFEEEEFxx",
-       "xFFE00EFFx",
-       "F0E0@@0E0F",
-       "F0E0@@0E0F",
-       "FEEE00EEEF",
-       "FFFFFFFFFF",
-       "XX0F00F0XX",
-       "XX000000XX",
-       "XXX0000XXX"]
-      #"0123456789ABCDEF"
+  
+  X = [[0,0,0,0,0,0,0,0,0,0],
+         [0,0,0,1,1,1,1,0,0,0],
+         [0,0,1,1,1,1,1,1,0,0],
+         [0,1,1,1,0,0,1,1,1,0],
+         [0,1,1,0,0,0,0,1,1,0],
+         [0,1,1,0,0,0,0,1,1,0],
+         [0,1,1,1,0,0,1,1,1,0],
+         [0,0,1,1,1,1,1,1,0,0],
+         [0,0,0,1,1,1,1,0,0,0],
+         [0,0,0,0,0,0,0,0,0,0]]
+      #"123456789A"
+ 
   y1 = 10
   for h in range (0,10):
     x1 = 10
     for k  in range (0,10):
       theBlock = X[h][k]
-      print(theBlock,end="")
       c = -1  # wool 35,0  WHITE
-      if (theBlock == 0):
+      if (theBlock == "1"):
         c = 0 # wool 35,1  ORANGE
-      if (theBlock == 1):
+      if (theBlock == "2"):
         c = 1 # wool 35,2  DARK PINK 
       if (theBlock == "3"):
         c = 2 # wool 35,3  LIGHT BLUE 
@@ -48,7 +48,6 @@ def matrix(mc,x,y,z):
         c = 5 # wool 35,5  GREEN
       mc.setBlock(x1-x,y1+y,z,35,c)
       x1 = x1 - 1
-    print()
     y1 = y1 - 1
     print()
     
