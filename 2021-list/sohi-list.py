@@ -1,69 +1,65 @@
+# Base project format.
+# Documentation https://github.com/raspberrypilearning/getting-started-with-minecraft-pi/blob/master/worksheet.md
 from mcpi.minecraft import Minecraft
 from mcpi import block
+from time import sleep
 
-mc = Minecraft.create()
-# set player to 0,0,0
-mc.player.setPos(0,0,0)
-# CLEAR AN AREA WITH AIR TO BUILD
-air = 0
-mc.setBlocks(-19,0,-19,19,64,19,air) # clear some air                                               
-x, y, z = mc.player.getPos()
-xyzString = str(x)+" , "+str(y)+" , "+str(z)
-print(xyzString)
-# mc.setBlock (x,y,z, material_number) 
+def init():
+    #ip = "192.168.7.84"
+    ip = "127.0.0.1"
+    mc = Minecraft.create(ip, 4711)
+    mc.setting("world_immutable",True)
+    #x, y, z = mc.player.getPos()        
+    return mc
+    
+def clearAir(mc,x,y,z):
+  mc.setBlocks(x-20,y,z-20,x+20,y+50,z+20,0)
+  #mc.setBlocks(-128,-3,-128,128,64,128,0)
 
-# Lay blocks flat on ground
-mc.setBlock(0,0,5,35,13) 	# WHITE   0,  0,  0
-mc.setBlock(1,0,5,35,13) 	# ORANGE  2,  0,  2
-mc.setBlock(-1,0,4,35,13) 	# PINK   -2,  0,  2
-mc.setBlock(0,0,4,35,13) 	# BLUE   -2,  0, -2
-mc.setBlock(1,0,4,35,13)  	# YELLOW  2,  0, -2
-mc.setBlock(2,0,4,35,13)
-mc.setBlock(-3,0,4,35,5)
-mc.setBlock(-4,0,4,35,5)
-mc.setBlock(3,0,3,35,13)
-mc.setBlock(2,0,3,35,13)
-mc.setBlock(1,0,3,35,13)
-mc.setBlock(0,0,3,35,13)
-mc.setBlock(-1,0,3,35,13)
-mc.setBlock(-2,0,3,35,13)
-mc.setBlock(-3,0,3,35,5)
-mc.setBlock(-4,0,3,35,15)
-mc.setBlock(-5,0,3,35,5)
-mc.setBlock(3,0,2,35,13)
-mc.setBlock(2,0,2,35,13)
-mc.setBlock(1,0,2,35,13)
-mc.setBlock(0,0,2,35,13)
-mc.setBlock(-1,0,2,35,13)
-mc.setBlock(-2,0,2,35,13)
-mc.setBlock(-3,0,2,35,5)
-mc.setBlock(-4,0,2,35,5)
-mc.setBlock(-5,0,2,35,5)
-mc.setBlock(3,0,1,35,13)
-mc.setBlock(2,0,1,35,13)
-mc.setBlock(1,0,1,35,13)
-mc.setBlock(0,0,1,35,13)
-mc.setBlock(-1,0,1,35,13)
-mc.setBlock(-2,0,1,35,13)
-mc.setBlock(-3,0,1,35,5)
-mc.setBlock(-4,0,1,35,5)
-mc.setBlock(4,0,1,35,5)
-mc.setBlock(3,0,0,35,5)
-mc.setBlock(2,0,0,35,5)
-mc.setBlock(1,0,0,35,5)
-mc.setBlock(0,0,0,35,5)
-mc.setBlock(-1,0,0,35,5)
-mc.setBlock(-2,0,0,35,5)
-mc.setBlock(3,0,-1,35,5)
-mc.setBlock(2,0,-1,35,5)
-mc.setBlock(-1,0,-1,35,5)
-mc.setBlock(-2,0,-1,35,5)
+def matrix(mc,x,y,z):
+  
+  X = [[0000000000],
+         [0001111000],
+         [0011111100],
+         [0111001110],
+         [0110000110],
+         [0110000110],
+         [0111001110],
+         [0011111100],
+         [0001111000],
+         [0000000000]]
+      #"123456789A"
+ 
+  y1 = 10
+  for h in range (0,10):
+    x1 = 10
+    for k  in range (0,10):
+      theBlock = X[h][k]
+      c = -1  # wool 35,0  WHITE
+      if (theBlock == "1"):
+        c = 0 # wool 35,1  ORANGE
+      if (theBlock == "2"):
+        c = 1 # wool 35,2  DARK PINK 
+      if (theBlock == "3"):
+        c = 2 # wool 35,3  LIGHT BLUE 
+      if (theBlock == "4"):
+        c = 3 # wool 35,4  YELLOW
+      if (theBlock == "5"):
+        c = 5 # wool 35,5  GREEN
+      mc.setBlock(x1-x,y1+y,z,35,c)
+      x1 = x1 - 1
+    y1 = y1 - 1
+    print()
+    
+def main():
+  mc = init()
+  x,y,z = mc.player.getPos()
+  clearAir(mc,x,y,z)
+  matrix(mc,x,y,z+5)
+  mc.player.setPos(x,y,z-5)
 
-#  Lay block in the air 
-
-
-mc.player.setPos(0,10,-5)
-
+if __name__ == "__main__":
+  main()
 
 '''
 wool 35,0  WHITE
@@ -83,8 +79,6 @@ wool 35,13  DARK GREEN
 wool 35,14  RED
 wool 35,15  BLACK
 
-
-#mc.setBlocks(-128,0,-128,128,64,128,0)
 #API Blocks
 #====================
 #   AIR                   0
@@ -159,11 +153,7 @@ wool 35,15  BLACK
 #   FENCE_GATE          107
 #   GLOWING_OBSIDIAN    246
 #   NETHER_REACTOR_CORE 247
+'''
 
 
-mc.setBlock(0,0,5,35,0) 	# WHITE   0,  0,  0
-mc.setBlock(2,2,5,35,1) 	# ORANGE  2,  0,  2
-mc.setBlock(-2,2,5,35,2) 	# PINK   -2,  0,  2
-mc.setBlock(-2-2,5,35,3) 	# BLUE   -2,  0, -2
-mc.setBlock(2,-2,5,35,4)  	# YELLOW  2,  0, -2
-''' 
+
