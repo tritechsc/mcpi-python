@@ -1,7 +1,8 @@
 from mcpi.minecraft import Minecraft
 from mcpi import block
 
-mc = Minecraft.create()
+#mc = Minecraft.create()
+mc = Minecraft.create("10.183.3.40", 4711)
 # set player to 0,0,0
 mc.player.setPos(0,0,0)
 # CLEAR AN AREA WITH AIR TO BUILD

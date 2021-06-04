@@ -5,8 +5,8 @@ from mcpi import block
 from time import sleep
 
 def init():
-    #mc = Minecraft.create("127.0.0.1", 4711)
-    mc = Minecraft.create("10.183.0.2", 4711)
+    #mc = Minecraft.create("10.183.0.11", 4711)
+    mc = Minecraft.create("10.183.0.20", 4711)
     x, y, z = mc.player.getPos()        
     return mc
 

@@ -59,7 +59,8 @@ def plotSphereSolid(mc,x,y,z,r,m):
 					print(h,k,l)
 
 def main():
-	mc = init()
+	#mc = init()
+	mc = Minecraft.create("10.183.0.20", 4711)
 	x,y,z = mc.player.getPos()
 	clearAir(mc)
 	mc.player.setPos(0,0,0)

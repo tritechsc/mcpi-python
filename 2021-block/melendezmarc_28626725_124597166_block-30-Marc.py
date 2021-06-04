@@ -1,60 +1,66 @@
 from mcpi.minecraft import Minecraft
 from mcpi import block
-import random
-
 
 mc = Minecraft.create()
 # set player to 0,0,0
 mc.player.setPos(0,0,0)
 # CLEAR AN AREA WITH AIR TO BUILD
 air = 0
-mc.setBlocks(-19,0,-19,19,64,19,air) # clear some air                                               
+mc.setBlocks(-19,-64,-19,30,64,19,air) # clear some air                                               
 x, y, z = mc.player.getPos()
-xyzString = str(x)+" , "+str(y)+" , "+str(z)
-print(xyzString)
-# mc.setBlock (x,y,z, material_number) 
-for h in range (0,21):
-	mc.setBlock(0,h,0,42,h)
-	
-
-count = 0 
-while (count < 200):
-	h = random.randint(-10,10)
-	k = random.randint(0,30)
-	l = random.randint(-10,10)
-	mc.setBlock(h,k,l,41,h)
-	count = count + 1
-	
-count = 0 
-while (count < 200):
-	h = random.randint(-20,20)
-	k = random.randint(0,30)
-	l = random.randint(-20,20)
-	mc.setBlock(h,k,l,57,h)
-	count = count + 1
-
-# Lay blocks flat on ground
-mc.setBlock(0,0,0,41,0) 	# WHITE   0,  0,  0
-mc.setBlock(1,0,1,41,1) 	# ORANGE  2,  0,  2
-mc.setBlock(-1,0,1,41,2) 	# PINK   -2,  0,  2
-mc.setBlock(-1,0,-1,41,3) 	# BLUE   -2,  0, -2
-mc.setBlock(1,0,-1,41,4)  	# YELLOW  2,  0, -2
 
 
-#  Lay block in the air 
-mc.setBlock(0,2,2,57,0) 	# WHITE   0,  0,  0
-mc.setBlock(1,3,2,57,1) 	# ORANGE  2,  0,  2
-mc.setBlock(-1,3,2,57,2) 	# PINK   -2,  0,  2
-mc.setBlock(-1,1,2,57,3) 	# BLUE   -2,  0, -2
-mc.setBlock(1,1,2,57,4)  	# YELLOW  2,  0, -2
-mc.setBlock(2,2,2,57,4)
-mc.setBlock(3,3,2,57,4)
-mc.setBlock(4,4,2,57,4)
-mc.setBlock(-8,5,4,57,4)
+# row 0
+mc.setBlock(5,0,5,35,7)
+mc.setBlock(5,0,-5,35,6)
+mc.setBlock(-5,0,-5,35,5)
+mc.setBlock(-5,0,5,35,4)
+mc.setBlock(0,0,5,35,3)
+mc.setBlock(0,0,-5,35,2)
+mc.setBlock(-5,0,0,35,1)
+mc.setBlock(5,0,0,35,0)
 
-mc.player.setPos(4.0,1.5,-5.2)
+# row 2
+mc.setBlock(5,3,5,35,7)
+mc.setBlock(5,3,-5,35,6)
+mc.setBlock(-5,3,-5,35,5)
+mc.setBlock(-5,3,5,35,4)
+mc.setBlock(0,3,5,35,3)
+mc.setBlock(0,3,-5,35,2)
+mc.setBlock(-5,3,0,35,1)
+mc.setBlock(5,3,0,35,0)
 
+# row 4
+mc.setBlock(5,4,5,35,7)
+mc.setBlock(5,4,-5,35,6)
+mc.setBlock(5,4,-5,35,5)
+mc.setBlock(5,4,5,35,4)
+mc.setBlock(0,4,5,35,3)
+mc.setBlock(0,4,-5,35,2)
+mc.setBlock(5,4,0,35,1)
+mc.setBlock(5,4,0,35,0)
 
+# row 6
+mc.setBlock(5,4,5,35,7)
+mc.setBlock(5,4,-5,35,6)
+mc.setBlock(5,4,-5,35,5)
+mc.setBlock(5,4,5,35,4)
+mc.setBlock(5,4,5,35,3)
+mc.setBlock(5,4,-5,35,2)
+mc.setBlock(5,4,0,35,1)
+mc.setBlock(5,4,0,35,0)
+
+# row 8
+mc.setBlock(5,4,5,35,7)
+mc.setBlock(5,4,5,35,6)
+mc.setBlock(-5,4,5,35,5)
+mc.setBlock(-5,4,5,35,4)
+mc.setBlock(-5,4,5,35,3)
+mc.setBlock(-5,4,5,35,2)
+mc.setBlock(-5,4,5,35,1)
+mc.setBlock(5,4,5,35,0)
+
+#NEVER GIVE UP
 '''
 wool 35,0  WHITE
 wool 35,1  ORANGE
@@ -72,8 +78,6 @@ wool 35,12  BROWN
 wool 35,13  DARK GREEN
 wool 35,14  RED
 wool 35,15  BLACK
-GOLD_BLOCK  41
-IRON_BLOCK  42
 
 
 #mc.setBlocks(-128,0,-128,128,64,128,0)
@@ -113,14 +117,14 @@ IRON_BLOCK  42
 #   MUSHROOM_BROWN       39
 #   MUSHROOM_RED         40
 #   GOLD_BLOCK           41
-#   IRON_BLOCK           42
+#   IRON_BLOCK           42#
 #   STONE_SLAB_DOUBLE    43
 #   STONE_SLAB           44
 #   BRICK_BLOCK          45
 #   TNT                  46
 #   BOOKSHELF            47
 #   MOSS_STONE           48
-#   OBSIDIAN             49
+#   OBSIDIAN             49#
 #   TORCH                50
 #   FIRE                 51
 #   STAIRS_WOOD          53
