@@ -1,33 +1,75 @@
+# Base project format.
+# Documentation https://github.com/raspberrypilearning/getting-started-with-minecraft-pi/blob/master/worksheet.md
 from mcpi.minecraft import Minecraft
 from mcpi import block
+from time import sleep
+from random import randint
 
-mc = Minecraft.create()
-# set player to 0,0,0
-mc.player.setPos(0,0,0)
-# CLEAR AN AREA WITH AIR TO BUILD
-air = 0
-mc.setBlocks(-19,0,-19,19,64,19,air) # clear some air                                               
-x, y, z = mc.player.getPos()
-xyzString = str(x)+" , "+str(y)+" , "+str(z)
-print(xyzString)
-# mc.setBlock (x,y,z, material_number) 
 
-# Lay blocks flat on ground
-mc.setBlock(0,0,0,35,0) 	# WHITE   0,  0,  0
-mc.setBlock(1,0,1,35,1) 	# ORANGE  2,  0,  2
-mc.setBlock(-1,0,1,35,2) 	# PINK   -2,  0,  2
-mc.setBlock(-1,0,-1,35,3) 	# BLUE   -2,  0, -2
-mc.setBlock(1,0,-1,35,4)  	# YELLOW  2,  0, -2
+def bulbs(mc):
+  count = 0
+  while (count < 1000000):
+    h = randint(-100, 100)
+    k = randint(0,100)
+    l = randint(-100,100)
+    c = randint(0,15)
+    mc.setBlock(h,k,l,35,c)
+    count = count + 1
+    print(count,h,k,l,c)
+    
+def init():
+    #ip = "192.168.7.84"
+    ip = "127.0.0.1"  
+    
+	mc = Minecraft.create(ip, 4711)
+    mc.setting("world_immutable",True)
+    #x, y, z = mc.player.getPos()        
+    return mc
+    
+def clearAir(mc,x,y,z):
+  mc.setBlocks(x-20,y,z-20,x+20,y+50,z+20,0)
+  #mc.setBlocks(-128,-3,-128,128,64,128,0)
 
-#  Lay block in the air 
-mc.setBlock(0,2,2,35,0) 	# WHITE   0,  0,  0
-mc.setBlock(1,3,2,35,1) 	# ORANGE  2,  0,  2
-mc.setBlock(-1,3,2,35,2) 	# PINK   -2,  0,  2
-mc.setBlock(-1,1,2,35,3) 	# BLUE   -2,  0, -2
-mc.setBlock(1,1,2,35,4)  	# YELLOW  2,  0, -2
-
-mc.player.setPos(0,0,-5)
-
+def matrix(mc,x,y,z):
+  
+  X = ["GGGGGGGDGGGGGGG",
+       "GGGGGGDDDGGGGGG",
+       "GGGGGDDDDDGGGGG",
+       "GGGGDDDDDDDGGGG",
+       "GGGDDDDDDDDDGGG",
+       "GGDDDDDDDDDDDGG",
+       "GDDDDDDDDDDDDDG",
+       "DDDDDDDDDDDDDDD",
+       "GGGGGGDDDGGGGGG",
+       "GGGGGGDDDGGGGGG"]
+      #"123456789ABCDEF"
+ 
+  y1 = 10
+  for h in range (0,10):
+    x1 = 10
+    for k  in range (0,15):
+      print(X[h][k],end="") # debug
+      #print(h,k," ",end="")
+      theBlock = X[h][k]
+      c = 0  # wool 35,0  WHITE
+      if (theBlock == "G"):
+        mc.setBlock(x1-x,y1+y,z,0)
+      elif (theBlock == "D"):
+        mc.setBlock(x1-x,y1+y,z,35,13)
+      x1 = x1 - 1
+    y1 = y1 - 1
+    print()
+    
+def main():
+  mc = init()
+  x,y,z = mc.player.getPos()
+  clearAir(mc,x,y,z)
+  matrix(mc,x,y,z+5)
+  mc.player.setPos(x,y,z-5)
+  bulbs(mc)
+  
+if __name__ == "__main__":
+  main()
 
 '''
 wool 35,0  WHITE
@@ -47,8 +89,6 @@ wool 35,13  DARK GREEN
 wool 35,14  RED
 wool 35,15  BLACK
 
-
-#mc.setBlocks(-128,0,-128,128,64,128,0)
 #API Blocks
 #====================
 #   AIR                   0
@@ -123,11 +163,7 @@ wool 35,15  BLACK
 #   FENCE_GATE          107
 #   GLOWING_OBSIDIAN    246
 #   NETHER_REACTOR_CORE 247
+'''
 
 
-mc.setBlock(0,0,5,35,0) 	# WHITE   0,  0,  0
-mc.setBlock(2,2,5,35,1) 	# ORANGE  2,  0,  2
-mc.setBlock(-2,2,5,35,2) 	# PINK   -2,  0,  2
-mc.setBlock(-2-2,5,35,3) 	# BLUE   -2,  0, -2
-mc.setBlock(2,-2,5,35,4)  	# YELLOW  2,  0, -2
-''' 
+

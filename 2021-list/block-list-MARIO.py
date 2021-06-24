@@ -21,16 +21,16 @@ def clearAir(mc,x,y,z):
 
 def matrix(mc,x,y,z):
   
-  X = ["xxxFFFFxxx",
-       "xxFEEEEFxx",
-       "xFFE00EFFx",
-       "F0E0000E0F",
-       "F0E0000E0F",
-       "FEEE00EEEF",
-       "FFFFFFFFFF",
-       "XX0F00F0XX",
-       "XX000000XX",
-       "XXX0000XXX"]
+  X =["0101010101",
+      "_00000000_",
+      "_00000000_",
+      "_00000000_",
+      "_00000000_",
+      "_00000000_",
+      "_00000000_",
+      "_00000000_",
+      "_00000000_",
+      "0101010101"]
       #"0123456789ABCDEF"
  
   y1 = 10
@@ -42,41 +42,13 @@ def matrix(mc,x,y,z):
       theBlock = X[h][k]
       c = -1 # LOGIC FOR WOOL OR NOT WOOL
       if (theBlock == "0"):
-        c = 0 # wool 35,0  WHITE
+        c = 49 # wool 35,0  WHITE
       if (theBlock == "1"):
-        c = 1 # wool 35,1  ORANGE
-      if (theBlock == "2"):
-        c = 2 # wool 35,2  DARK PINK 
-      if (theBlock == "3"):
-        c = 3 # wool 35,3  LIGHT BLUE 
-      if (theBlock == "4"):
-          c = 4 # wool 35,4  YELLOW
-      if (theBlock == "5"):
-        c = 5 # wool 35,5  GREEN
-      if (theBlock == "6"):
-        c = 6 # wool 35,6  LIGHT PINK
-      if (theBlock == "7"):
-        c = 7 # wool 35,7  DARK GRAY
-      if (theBlock == "8"):
-        c = 8 # wool 35,8  LIGHT GRAY  
-      if (theBlock == "9"):
-        c = 9 # wool 35,9  TEAL OR DARKER BLUE
-      if (theBlock == "A"):
-        c = 10 # wool 35,10  VIOLET
-      if (theBlock == "B"):
-        c = 11 # wool 35,11  DARK BLUE
-      if (theBlock == "C"):
-        c = 12 # wool 35,12  BROWN
-      if (theBlock == "D"):
-        c = 13 # wool 35,13  DARK GREEN
-      if (theBlock == "E"):
-        c = 14 # wool 35,14  RED
-      if (theBlock == "F"):
-        c = 15 # wool 35,15  BLACK
+        c = 42 # wool 35,1  ORANGE
       if c == -1:
         mc.setBlock(x1-x,y1+y,z,0) # set the material with a number
       else:
-        mc.setBlock(x1-x,y1+y,z,35,c)
+        mc.setBlock(x1-x,y1+y,z,c)
       x1 = x1 - 1
     y1 = y1 - 1
     print()
